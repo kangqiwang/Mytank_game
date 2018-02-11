@@ -18,7 +18,7 @@ public class Player extends Tank {
 		this.x=x;
 		this.y=y;
 		this.direct=direct;
-		//实例化炮塔对象
+		//instantiation 
 		pt=new Turret(x,y,direct);
 		tkpic=new BufferedImage[4];
 		width=new int[4];
@@ -61,10 +61,10 @@ public class Player extends Tank {
 				break;
 			}		
 	}
-	//判断玩家坦克与敌方的互相碰撞
+	//whether touch each other
 	public boolean isTouchTank(){
 		boolean b=false;
-		//同事判断和玩家坦克的接触，和其他电脑坦克的接触		
+		//whether users' tank touch others		
 		switch(this.direct){
 		case 0:			
 			for(int i=0;i<emy.size();i++){
@@ -101,10 +101,10 @@ public class Player extends Tank {
 		}
 		return b;
 	}
-	//判断电脑方坦克与砖墙的碰撞
+	//whether computers' tanks hit the wall and others
 	public boolean isTouchBrick(){
 		boolean b=false;
-		//同事判断和玩家坦克的接触，和其他电脑坦克的接触		
+		//		
 		switch(this.direct){
 		case 0:			
 			for(int i=0;i<brk.size();i++){

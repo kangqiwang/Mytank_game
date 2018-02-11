@@ -19,7 +19,7 @@ public class GameFrame extends JFrame {
 	JPanel pn2;
 	GmStartPn pn_start;
 	public GameFrame(){
-		bt_start=new JButton("开始");
+		bt_start=new JButton("start");
 		bt_start.addKeyListener(new KeyListener() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -48,7 +48,7 @@ public class GameFrame extends JFrame {
 				// TODO Auto-generated method stub
 				if(gamePt==null){
 					GameFrame.this.remove(pn_start);
-					gamePt=new GamePlat();//游戏主面板
+					gamePt=new GamePlat();//the game panel
 					new Thread(gamePt).start();
 					GameFrame.this.addKeyListener(gamePt);	
 					GameFrame.this.add(gamePt);
@@ -70,7 +70,7 @@ public class GameFrame extends JFrame {
 			}
 			
 		});
-		bt_stop=new JButton("暂停");
+		bt_stop=new JButton("pause");
 		bt_stop.addKeyListener(new KeyListener(){
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -110,7 +110,7 @@ public class GameFrame extends JFrame {
 				}
 			}			
 		});
-		bt_exit=new JButton("退出");
+		bt_exit=new JButton("exit");
 		bt_exit.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -144,9 +144,9 @@ public class GameFrame extends JFrame {
 		pn2.add(bt_start);
 		pn2.add(bt_stop);
 		pn2.add(bt_exit);
-		pn_start=new GmStartPn();//开始的界面面板
+		pn_start=new GmStartPn();//the start panel
 		this.add(pn_start);
-		//gamePt=new GamePlat();//游戏主面板
+		//gamePt=new GamePlat();//the game panel
 		//new Thread(gamePt).start();
 		/*this.addKeyListener(new KeyAdapter(){
 			@Override
@@ -180,7 +180,7 @@ public class GameFrame extends JFrame {
 		int x=(Toolkit.getDefaultToolkit().getScreenSize().width-this.getWidth())/2;
 		int y=(Toolkit.getDefaultToolkit().getScreenSize().height-this.getHeight())/2;
 		this.setLocation(x, y);
-		this.setTitle("坦克大战游戏1.0");
+		this.setTitle("my tank game 1.0");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);		
 	}

@@ -50,7 +50,7 @@ public class EnemyTk extends Tank implements Runnable{
 			e.printStackTrace();
 		}	
 	}
-	//发射炮弹
+	//attack
 	public void shoot(){
 		Bullet bt=null;
 		switch(this.direct){
@@ -90,13 +90,13 @@ public class EnemyTk extends Tank implements Runnable{
 			break;
 		}
 	}
-	//判断电脑方坦克的互相碰撞
+	//decide on whether computers' tanks crash into each others
 	public boolean isTouchTank(){
 		boolean b=false;
-		//同事判断和玩家坦克的接触，和其他电脑坦克的接触		
+		//whether your own tank hit others		
 		switch(this.direct){
 		case 0:
-			//判断和玩家坦克接触
+			//whether tanks touch each other
 			if(pler==null){
 				return false;
 			}
@@ -113,7 +113,7 @@ public class EnemyTk extends Tank implements Runnable{
 			}			
 			break;
 		case 1:
-			//判断和玩家坦克接触
+			//whether computers' tanks hit your own tank
 			if(pler==null){
 				return false;
 			}
@@ -164,10 +164,10 @@ public class EnemyTk extends Tank implements Runnable{
 		}
 		return b;
 	}
-	//判断电脑方坦克与砖墙的碰撞
+	//whether computers' tanks hit the walls
 	public boolean isTouchBrick(){
 		boolean b=false;
-		//同事判断和玩家坦克的接触，和其他电脑坦克的接触		
+		//decide on the direction		
 		switch(this.direct){
 		case 0:			
 			for(int i=0;i<brk.size();i++){

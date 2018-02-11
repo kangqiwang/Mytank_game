@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 public class GamePlat extends JPanel implements Runnable, KeyListener {
 	Player p1;
 	Vector<EnemyTk> enemy=new Vector<EnemyTk>();
-	Vector<Bomb> bom=new Vector<Bomb>();//爆炸效果的炸弹
-	Vector<Brick> brk=new Vector<Brick>();//砖墙
+	Vector<Bomb> bom=new Vector<Bomb>();//explosion
+	Vector<Brick> brk=new Vector<Brick>();//the walls
 	public GamePlat(){
 		p1=new Player(400,400,0);
 		Random rdm=new Random(); 
@@ -30,7 +30,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 		}
 		p1.emy=enemy;
 		p1.brk=brk;
-		//创建砖墙对象，放入集合
+		//create walls and put them into class Brick
 		for(int i=0;i<2;i++){
 			for(int j=0;j<16;j++){
 				Brick bk=new Brick(620-j*20,i*20+180);
@@ -51,12 +51,12 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				brk.add(bk);
 			}
 		}
-		//监听鼠标单击
+		//listen the mouse 
 		this.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				//判断是否单击的是玩家坦克
+				//judge whether click your own tank
 				switch(p1.direct){
 				case 0:	
 					if(e.getX()>p1.x && e.getX()<p1.x+p1.width[0] && e.getY()>p1.y && e.getY()<p1.y+p1.height[0]){
@@ -146,7 +146,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				p1.drawTank(g, this);
 			}
 		}
-		//绘制砖墙
+		//draw the walls
 		for(int i=0;i<brk.size();i++){
 			Brick bk=brk.get(i);
 			if(bk.isLive){
@@ -156,7 +156,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				brk.remove(bk);
 			}
 		}
-		//绘制电脑方的坦克
+		//draw the computers' tanks
 		for(int i=0;i<enemy.size();i++){
 			EnemyTk etk=enemy.get(i);
 			if(etk.isLive){
@@ -166,7 +166,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				enemy.remove(etk);				
 			}
 		}
-		//绘制电脑坦克炮弹
+		//draw the computers' bullet
 		for(int i=0;i<enemy.size();i++){
 			EnemyTk etk=enemy.get(i);
 			for(int j=0;j<etk.blt.size();j++){
@@ -177,12 +177,12 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				}
 				else{
 					etk.blt.remove(bt);
-					//System.out.println("子弹个数："+p1.blt.size());
+					//System.out.println("the nummber of bullet"+p1.blt.size());
 				}
 			}
 			
 		}
-		//绘制玩家坦克炮弹
+		//draw your own tanks and bullets
 		for(int i=0;i<p1.blt.size();i++){
 			Bullet bt=p1.blt.get(i);
 			if(bt!=null && bt.isLive){
@@ -194,7 +194,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				//System.out.println("子弹个数："+p1.blt.size());
 			}
 		}
-		//绘制击中后炸弹效果
+		//draw the image of explosion
 		for(int i=0;i<bom.size();i++){
 			Bomb bm=bom.get(i);			
 			if(bm.live>8){
@@ -212,7 +212,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 		}
 		
 	}
-	//判断炮弹击中砖墙
+	//judge whether the bullet hit the walls
 		public void hitBrick(Bullet bt,Brick bk){
 			if(bt==null || bk==null){
 				return;
@@ -244,7 +244,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				break;
 			}
 		}
-	//判断炮弹击中电脑方坦克
+	//whether bullet hits the computers' tanks
 	public void hitTanks(Bullet bt,Tank tk){
 		if(bt==null || tk==null){
 			return;
@@ -295,21 +295,21 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}			
-			//判断玩家坦克炮弹击中电脑方坦克
+			//whether user hit their enemy
 			if(p1!=null){
 				for(int i=0;i<p1.blt.size();i++){
 					Bullet bt=p1.blt.get(i);
 					for(int j=0;j<enemy.size();j++){
 						this.hitTanks(bt, enemy.get(j));
 					}
-					//击中砖墙
+					//or hit the walls
 					for(int j=0;j<brk.size();j++){
 						this.hitBrick(bt, brk.get(j));						
 					}
 				}
 			}		
 			
-			//让电脑方塔克持续发射炮弹，并判断击中玩家坦克
+			//computers' tanks can shoot the bullet and check if it hits users'
 			for(int i=0;i<enemy.size();i++){
 				EnemyTk etk=enemy.get(i);
 				if(etk.blt.size()<1){
@@ -322,7 +322,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 				for(int j=0;j<etk.blt.size();j++){
 					Bullet bt=etk.blt.get(j);
 					this.hitTanks(bt, p1);	
-					//击中砖墙
+					//or hits walls
 					for(int n=0;n<brk.size();n++){
 						this.hitBrick(bt, brk.get(n));						
 					}

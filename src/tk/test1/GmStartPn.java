@@ -16,8 +16,8 @@ public class GmStartPn extends JPanel {
 		g.setColor(Color.black);
 		g.drawRect(0, 0, 640, 480);
 		g.setColor(Color.blue);
-		g.setFont(new Font("楷体",Font.BOLD, 30));
-		g.drawString("坦克大战游戏1.0", 200, 200);
+		g.setFont(new Font("bold",Font.BOLD, 30));
+		g.drawString("MY Tank Game", 200, 200);
 	}
 
 }
