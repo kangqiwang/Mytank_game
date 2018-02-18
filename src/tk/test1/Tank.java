@@ -6,7 +6,7 @@ public class Tank {
 	int x;
 	int y;
 	int direct;
-	int speed=2;
+	int speed=5;
 	int[] width;
 	int[] height;
 	boolean isLive=true;

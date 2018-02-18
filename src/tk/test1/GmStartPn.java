@@ -12,12 +12,12 @@ public class GmStartPn extends JPanel {
 		// TODO Auto-generated method stub
 		super.paint(g);
 		g.setColor(Color.WHITE);
-		g.fillRect(0, 0, 640, 480);
+		g.fillRect(0, 0, 600, 500);
 		g.setColor(Color.black);
-		g.drawRect(0, 0, 640, 480);
+		g.drawRect(0, 0, 600, 500);
 		g.setColor(Color.blue);
-		g.setFont(new Font("bold",Font.BOLD, 30));
-		g.drawString("MY Tank Game", 200, 200);
+		g.setFont(new Font("bold",Font.BOLD, 40));
+		g.drawString("MY Tank Game", 100, 200);
 	}
 
 }

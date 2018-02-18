@@ -17,10 +17,10 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 	Vector<Bomb> bom=new Vector<Bomb>();//explosion
 	Vector<Brick> brk=new Vector<Brick>();//the walls
 	public GamePlat(){
-		p1=new Player(400,400,0);
+		p1=new Player(400,400,0);//player is yourself(x,y,direction)
 		Random rdm=new Random(); 
-		for(int i=0;i<7;i++){
-			EnemyTk etk=new EnemyTk(i*70+20,rdm.nextInt(100)+10,rdm.nextInt(4));
+		for(int i=0;i<10;i++){
+			EnemyTk etk=new EnemyTk(i*70,rdm.nextInt(100)+10,rdm.nextInt(4));
 			new Thread(etk).start();
 			etk.setEmy(enemy);
 			etk.setBrk(brk);
@@ -191,7 +191,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 			}
 			else{
 				p1.blt.remove(bt);
-				//System.out.println("×Óµ¯¸öÊý£º"+p1.blt.size());
+				//System.out.println(p1.blt.size());
 			}
 		}
 		//draw the image of explosion
@@ -212,7 +212,7 @@ public class GamePlat extends JPanel implements Runnable, KeyListener {
 		}
 		
 	}
-	//judge whether the bullet hit the walls
+	// whether the bullet hit the walls
 		public void hitBrick(Bullet bt,Brick bk){
 			if(bt==null || bk==null){
 				return;

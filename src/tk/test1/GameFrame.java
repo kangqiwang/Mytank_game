@@ -176,7 +176,7 @@ public class GameFrame extends JFrame {
 		//this.add(gamePt);
 		this.add(pn2,BorderLayout.SOUTH);
 		
-		this.setSize(800, 600);
+		this.setSize(1000, 600);
 		int x=(Toolkit.getDefaultToolkit().getScreenSize().width-this.getWidth())/2;
 		int y=(Toolkit.getDefaultToolkit().getScreenSize().height-this.getHeight())/2;
 		this.setLocation(x, y);

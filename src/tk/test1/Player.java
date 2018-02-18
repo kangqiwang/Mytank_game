@@ -64,7 +64,7 @@ public class Player extends Tank {
 	//whether touch each other
 	public boolean isTouchTank(){
 		boolean b=false;
-		//whether users' tank touch others		
+		//whether users' tank touch others	
 		switch(this.direct){
 		case 0:			
 			for(int i=0;i<emy.size();i++){
@@ -101,7 +101,7 @@ public class Player extends Tank {
 		}
 		return b;
 	}
-	//whether computers' tanks hit the wall and others
+	//whether computers' tanks hit the wall
 	public boolean isTouchBrick(){
 		boolean b=false;
 		//		
@@ -132,7 +132,7 @@ public class Player extends Tank {
 			break;
 		case 3:
 			for(int i=0;i<brk.size();i++){
-				Brick bk=brk.get(i);				
+				Brick bk=brk.get(i);// tank direction left, if tank.x >==bk.x and tank.x <= bk.x+bk.w and 	
 					if(this.x>=bk.x && this.x<=bk.x+bk.w && this.y+this.height[this.direct]>=bk.y && this.y<=bk.y+bk.h){
 						return true;				
 				}
@@ -140,6 +140,22 @@ public class Player extends Tank {
 			break;
 		}
 		return b;
+	}
+	//whether your tank hit the border of plane 
+	public boolean isTouchFrame() {
+		boolean b=false;
+		switch(this.direct) {
+		case 0:
+			break;
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		}
+		return isLive;
+		
 	}
 	public void move(){
 		switch(this.direct){

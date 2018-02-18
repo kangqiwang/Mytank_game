@@ -88,6 +88,7 @@ public class EnemyTk extends Tank implements Runnable{
 		case 3:
 			g.drawImage(this.tkpic[3], x, y, p);
 			break;
+		
 		}
 	}
 	//decide on whether computers' tanks crash into each others

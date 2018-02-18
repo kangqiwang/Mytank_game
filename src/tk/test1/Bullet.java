@@ -6,7 +6,7 @@ public class Bullet implements Runnable {
 	int x;
 	int y;
 	int direct;
-	int speed=3;
+	int speed=4;
 	int width=8;
 	int height=8;
 	Color color=Color.blue;
@@ -26,7 +26,7 @@ public class Bullet implements Runnable {
 				break;
 			}
 			try {
-				Thread.sleep(50);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
